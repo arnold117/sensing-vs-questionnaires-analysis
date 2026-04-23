@@ -785,7 +785,7 @@ def figS1_ieee():
 
     # title in LaTeX caption instead
 
-    fig.savefig(OUT / "figS1_idiographic.png")
+    fig.savefig(OUT / "fig6_idiographic.png")
     plt.close(); print("  figS1 done")
 
 
@@ -1178,7 +1178,7 @@ def figS5_ieee():
     fig.suptitle("Robustness to Alternative Explanations",
                  fontsize=9, fontweight="bold", y=1.0)
 
-    fig.savefig(OUT / "figS5_rebuttals.png")
+    fig.savefig(OUT / "fig4_rebuttals.png")
     plt.close(); print("  figS5 done")
 
 
