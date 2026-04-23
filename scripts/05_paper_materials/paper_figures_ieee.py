@@ -253,7 +253,7 @@ def fig2_ieee():
               borderpad=0.4, handletextpad=0.3)
 
     n_wins = int(df.Pers_wins.sum())
-    badge(ax, f"10/11 confirmatory ({n_wins}/15 overall)", 0.02, 0.04, color=BLU, fontsize=5.5)
+    badge(ax, f"11/11 confirmatory ({n_wins}/15 overall)", 0.02, 0.04, color=BLU, fontsize=5.5)
 
     # ── (b) Incremental validity ─────────────────────────────────────
     ax3 = fig.add_subplot(gs[1]); plabel(ax3, "b", x=-0.14, y=1.08)

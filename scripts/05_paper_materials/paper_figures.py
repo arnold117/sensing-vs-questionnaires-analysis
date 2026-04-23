@@ -405,8 +405,8 @@ def fig3_core():
 
     # Win badge
     n_wins = int(df.Pers_wins.sum())
-    # Show confirmatory tally (S2+S3: 10/11) as primary, full tally as secondary
-    badge(ax, f"10/11 confirmatory ({n_wins}/15 overall)", 0.02, 0.04, color=BLU, fontsize=8)
+    # Show confirmatory tally (S2+S3: 11/11) as primary, full tally as secondary
+    badge(ax, f"11/11 confirmatory ({n_wins}/15 overall)", 0.02, 0.04, color=BLU, fontsize=8)
 
     # ── (b) Incremental validity — does sensing add to personality? ──
     ax3 = fig.add_subplot(gs[1]); plabel(ax3, "b")
