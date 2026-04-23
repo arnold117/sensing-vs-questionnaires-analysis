@@ -709,12 +709,12 @@ def fig5_ieee():
 # ═══════════════════════════════════════════════════════════════════════
 
 def figS1_ieee():
-    """Fig S1: Idiographic. Full width."""
+    """Fig S1: Idiographic. Single column, vertical stack."""
     df = pd.read_csv(ROB / "idiographic_models.csv")
     r2 = df.R2_person.dropna()
 
-    fig = plt.figure(figsize=(7.0, 2.8))
-    gs = gridspec.GridSpec(1, 3, width_ratios=[1, 1.5, 1.4], wspace=0.38)
+    fig = plt.figure(figsize=(3.5, 5.2))
+    gs = gridspec.GridSpec(3, 1, height_ratios=[1, 1.2, 1.0], hspace=0.5)
     ax1 = fig.add_subplot(gs[0])
     ax2 = fig.add_subplot(gs[1])
     ax3 = fig.add_subplot(gs[2])
@@ -783,8 +783,7 @@ def figS1_ieee():
     ax3.set_xlim(0, 55)
     clean_axis(ax3, grid_axis="x")
 
-    fig.suptitle("Passive Sensing Works for Some Individuals",
-                 fontsize=8, fontweight="bold", y=1.02)
+    # title in LaTeX caption instead
 
     fig.savefig(OUT / "figS1_idiographic.png")
     plt.close(); print("  figS1 done")
@@ -1012,9 +1011,9 @@ def figS4_ieee():
 
 
 def figS5_ieee():
-    """Fig S5: Rebuttals (4 panels). Full width."""
-    fig = plt.figure(figsize=(7.0, 5.5))
-    gs = gridspec.GridSpec(2, 2, hspace=0.65, wspace=0.35)
+    """Fig S5: Rebuttals (4 panels). Full width, compact."""
+    fig = plt.figure(figsize=(7.0, 3.8))
+    gs = gridspec.GridSpec(2, 2, hspace=0.55, wspace=0.35)
 
     short_map = {
         "cesd_total": "CES-D", "stai_trait_total": "STAI-T", "bai_total": "BAI",
