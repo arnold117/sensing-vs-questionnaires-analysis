@@ -124,7 +124,7 @@ def fig1_ieee():
 
     # ── Three study cards ────────────────────────────────────────────
     ax_cards = fig.add_subplot(111)
-    ax_cards.set_xlim(0, 10); ax_cards.set_ylim(0, 7); ax_cards.axis("off")
+    ax_cards.set_xlim(-0.1, 9.1); ax_cards.set_ylim(0, 7); ax_cards.axis("off")
 
     studies = [
         {"name": "Study 1", "sub": "StudentLife", "uni": "Dartmouth 2013",
@@ -283,9 +283,9 @@ def fig2_ieee():
 # FIG 3 — FULL WIDTH (7.0 x 8) — Mechanism
 # ═══════════════════════════════════════════════════════════════════════
 def fig3_ieee():
-    """Fig 3: SHAP + trait specificity + DL heatmap. Full width."""
-    fig = plt.figure(figsize=(7.0, 8.0))
-    gs = gridspec.GridSpec(3, 1, height_ratios=[0.9, 0.8, 1.2], hspace=0.38)
+    """Fig 3: SHAP + trait specificity + DL heatmap. Single column."""
+    fig = plt.figure(figsize=(3.5, 7.5))
+    gs = gridspec.GridSpec(3, 1, height_ratios=[0.9, 0.8, 1.2], hspace=0.45)
 
     # ── (a) SHAP heatmap ─────────────────────────────────────────────
     ax = fig.add_subplot(gs[0]); plabel(ax, "a")
