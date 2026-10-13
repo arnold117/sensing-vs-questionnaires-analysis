@@ -1,6 +1,6 @@
 # Can Passive Sensing Replace Questionnaires for Mental Health Prediction?
 
-A three-study head-to-head comparison (N=1,559, 3 universities, 15 outcomes) of brief personality questionnaires vs. weeks of continuous passive smartphone/wearable sensing for predicting mental health and academic performance.
+A three-study head-to-head comparison (N=1,559, 3 universities, 15 study–outcome combinations) of brief personality questionnaires vs. weeks of continuous passive smartphone/wearable sensing for predicting mental health and academic performance.
 
 ## Studies
 
@@ -10,25 +10,14 @@ A three-study head-to-head comparison (N=1,559, 3 universities, 15 outcomes) of 
 | **N** | 28 | 722 | 809 |
 | **Personality** | BFI-44 | BFI-44 | BFI-10 |
 | **Sensing** | 13 modalities, 87 features | Fitbit + comm, 28 features | Fitbit + phone + GPS, 19 features + 2,597 RAPIDS |
-| **MH Outcomes** | PHQ-9, PSS, Loneliness, Flourishing, PANAS | CES-D, STAI, BAI | BDI-II, STAI, PSS-10, CESD, UCLA |
+| **MH Outcomes** | PHQ-9, PSS, Loneliness | CES-D, STAI, BAI, Loneliness, Self-esteem | BDI-II, STAI, PSS-10, CESD, UCLA |
 | **Academic** | GPA | GPA | — |
 
 ## Key Results
 
-**Questionnaires dominate at the population level.** Personality wins 14/15 outcome comparisons (93%). Two BFI items (10 seconds, R²=0.36) outperform 28 sensing features collected over weeks (R²=-0.16). Even modern deep learning (1D-CNN) and foundation models (MOMENT) cannot rescue sensing — all produce negative R². Neuroticism is the #1 mental health predictor in 28/28 SHAP models across all 3 studies; Conscientiousness is #1 for GPA in 8/8 models. Sensing features are highly reliable (ICC=0.73–0.98) but fundamentally disconnected from mental health outcomes.
+**Questionnaires dominate at the population level.** Personality wins all 11 primary comparisons (Studies 2–3): personality-only R² = .08–.54 vs. sensing-only R² ≤ .01 in every primary comparison. Including the exploratory 28-person Study 1 the tally is 14/15; the one exception, Study 1 PHQ-9 (sensing R² = .20, N = 27), is attributed to small-sample overfitting. Two BFI Neuroticism items, selected inside nested CV, reach R² = .36 for Study 2 depression (CES-D) vs. −.02 for PCA-reduced sensing and −.12 for 28 raw sensing features; one of the items ("Is depressed, blue") overlaps almost completely with depression-scale content, so this marks the ceiling of personality's construct-proximity advantage, not a recommended screening protocol. Deep learning does not rescue sensing: MLP, 1D-CNN and MOMENT foundation-model embeddings never beat Ridge (MOMENT R² = −1.0 to −1.7). Neuroticism is the top SHAP predictor in all 8 mental-health study–outcome–model combinations of Studies 2–3; Conscientiousness is the top SHAP predictor of GPA across all four model types in the two samples with registrar GPA (Studies 1–2). Sensing features are highly reliable (ICC = 0.73–0.98), so the problem is construct relevance, not measurement quality.
 
-**But sensing has value under specific conditions:**
-
-| Condition | Evidence | Effect Size |
-|-----------|----------|-------------|
-| **Lagged early warning** | Autoregressive + sensing beats autoregressive alone | +0.031 R² |
-| **Communication metadata** | SMS/call logs improve depression prediction (S2) | +0.030 R² |
-| **Idiographic monitoring** | 17% of individuals show person-specific R² > 0.3 | Variable |
-| **Sleep + nonlinear models** | RF captures sleep-anxiety link (S2) | +0.055 R² |
-| **Engagement signal** | Device non-wear correlates with anxiety | r = -0.12 |
-| **Clinical classification** | Pers+Beh AUC improves over Pers-only (S2) | +0.06–0.08 AUC |
-
-**Practical implication**: Screen with a brief questionnaire (2–5 items), then deploy sensing only for high-risk individuals where personalized monitoring adds value.
+**Sensing adds little beyond personality.** Sensing added significant value in 1/8 incremental-validity tests (Study 3 BDI-II, ΔR² = .024) and 0/5 DeLong AUC tests after Benjamini–Hochberg FDR. None of the 44 robustness analyses changed the result, and results stayed flat across 7–92-day windows. Within person, however, 17% of participants (N = 392) had a person-specific sensing–mood R² > .30, so sensing may still be useful for individually calibrated monitoring.
 
 ## Project Structure
 
@@ -101,7 +90,7 @@ data/
 
 results/
   core/                              # Main findings (CSV + figures)
-  robustness/                        # 41 robustness check outputs
+  robustness/                        # Outputs of the 44 robustness analyses (13 targeted rescue tests)
   supplementary/                     # Additional analyses
   by_study/                          # Per-study results (s1, s2, s3)
   tables/                            # Publication-ready tables
